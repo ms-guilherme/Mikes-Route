@@ -49,6 +49,11 @@ input, .btn {font: normal 500 20px Quicksand;}
     
     color: var(--whiteyellow);
     background-color: var(--blue);
+    transition: 0.4s;
+}
+.btn:hover {
+    color: var(--whiteyellow) !important;
+    background-color: var(--darkblue);
 }
 
 .btn-low {
@@ -57,6 +62,7 @@ input, .btn {font: normal 500 20px Quicksand;}
     background-color: transparent;
     color: var(--whiteyellow);
 
+    cursor: pointer;
     text-wrap: wrap;
 }
 
@@ -102,7 +108,7 @@ header #company img {
     border-radius: 100%;
 }
 
-header #menu {
+header .menu {
     width: fit-content;
     margin-left: auto;
 
@@ -112,8 +118,36 @@ header #menu {
 
     padding-inline: 39px;
 }
+header #menu2 {
+    width: 100%;
+    height: 75px;
 
-header #menu a {
+    transition: 0.5s;
+    background-color: var(--blue);
+
+    transform: translateY(-100%);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+header #menu2::after {
+    content: "";
+
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    background-image: linear-gradient(135deg, var(--whiteyellow), transparent 100%);
+    opacity: 0.3;
+}
+header #menu2 a {color: khaki;}
+
+header .menu a {
     font: normal 400 16px Roboto Slab;
     text-decoration: none;
     color: var(--blue);
@@ -122,28 +156,29 @@ header #menu a {
 
     transition: 0.33s;
 }
-header #menu a:last-of-type {
+header .menu a:last-of-type {
     font-weight: 700;
 }
 
-header #menu a:not(:last-of-type):hover {
+header .menu a:not(:last-of-type):hover {
     font-weight: 500;
     color: var(--yellow);
     border-bottom: dashed 2px var(--khaki);
 }
-header #menu a:last-of-type:hover {
+header .menu a:last-of-type:hover {
     font-weight: 900;
     color: var(--yellow);
     border-bottom: dashed 2px var(--khaki);
 }
 
 
-header #menu img {
+header .menu img {
     display: none;
 
     width: 30px;
     height: 30px;
     cursor: pointer;
+    z-index: 3;
 }
 
 header #call {
@@ -191,8 +226,28 @@ header #call img {
 @media screen and (max-width: 655px) { /*reduced index*/
     header #company {width: 70%;}
 
-    header #menu a {display: none;}
-    header #menu img {display: block;}
+    header .menu:not(#menu2) a {display: none;}
+    header .menu img {display: block;}
+}
+@media screen and (max-width: 415px) {
+    header #menu2 {
+        padding-inline: 25px;
+    }
+    header .menu img {margin-left: 50%;}
+}
+@media screen and (max-width: 380px) {
+    header #company div {font-size: 22px; width: 200px;}
+    header #company img {
+        width: 75px;
+        height: 75px;
+    }
+}
+@media screen and (max-width: 350px) {
+    header #menu2 a {font-size: 13px;}
+}
+@media screen and (max-width: 305px) {
+    header #company div {border-bottom: 0;}
+    header #menu2 {padding-left: 15px;}
 }
 /*   --HEADER--   */
 
@@ -235,6 +290,7 @@ header #call img {
     margin-top: 50px;
 
     font-size: 20px;
+    text-wrap: balance;
 }
 #content-btns .btn-low {color: var(--darkblue);}
 
@@ -266,7 +322,7 @@ header #call img {
     background-image: linear-gradient(90deg, var(--whiteyellow), transparent 25%);
 }
 
-#bg-form {
+#bg-form-conteiner {
     width: 60%;
     padding: 40px 65px 40px 65px;
 
@@ -283,7 +339,7 @@ header #call img {
     border-radius: 20px;
 }
 
-#bg-form h2 {
+#bg-form-conteiner h2 {
     padding-bottom: 15px;
     color: var(--whiteyellow);
 }
@@ -348,7 +404,7 @@ form div {
     #hero-bg::after {
         background-image: linear-gradient(180deg, var(--whiteyellow), transparent 10%);
     }
-    #bg-form {
+    #bg-form-conteiner {
         width: 85%;
         margin: auto;
         padding: 10px;
@@ -359,6 +415,11 @@ form div {
     }
     form {flex-direction: row;}
     form .btn-low {display: none;}
+}
+
+@media screen and (max-width: 605px) {
+    #hero-bg form {flex-direction: column;}
+    #hero-bg form input {max-width: 300px;}
 }
 
 /*   --HERO--   */
@@ -404,16 +465,19 @@ form div {
 }
 
 #sec-proposal #perks {
-    width: 100%;
-    max-width: 800px;
+    width: 95%;
+    max-width: 1000px;
     margin: auto;
     margin-top: 70px;
 
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    row-gap: 45px;
 }
 #perks div {
-    width: 40%;
-    max-width: 200px;
+    width: 90%;
+    max-width: 225px;
 
     margin-inline: auto;
 
@@ -422,16 +486,34 @@ form div {
     background-color: var(--weakblue);
     text-align: center;
 }
+
 #perks img {
     width: 60px;
     height: 60px;
 }
 #perks h2 {
+    margin: auto;
     font-size: 40px;
 }
 #perks p {
     margin-top: 20px !important;
     color: var(--whiteyellow);
+}
+
+@media screen and (max-width: 528px) {
+    #sec-proposal #perks {
+        width: 100%;
+        gap: 5px;
+        row-gap: 30px;
+    }
+    #perks div {
+        width: 50%;
+        padding-inline: 0px;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    #perks h2 {font-size: 30px;}
 }
 /*   --PROPOSAL--   */
 
@@ -441,8 +523,7 @@ form div {
 
 /*   ++REVIEWS++   */
 #sec-reviews {
-    padding: 50px 30px;
-    padding-bottom: 500px;
+    padding: 75px 30px 125px 30px;
 
     position: relative;
 
@@ -450,19 +531,16 @@ form div {
     background-color: var(--yellow);
 }
 
+#sec-review-txt p {padding-bottom: 10px !important;}
+
 .review {
     width: 85%;
     max-width: 500px;
-    min-height: 400px;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
 
     margin: auto;
-    margin-top: 50px;
 
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+    position: relative;
 
     background-color: var(--khaki);
     border-radius: 50px;
@@ -508,32 +586,8 @@ form div {
     text-align: center;
 }
 
-#selector {
-    position: absolute;
-    bottom: 50px;
-    transform: translateX(-50%);
-    left: 50%;
-
-    display: flex;
-    gap: 10px;
-}
-.circle {
-    width: 20px;
-    height: 20px;
-
-    border-radius: 100%;
-    background-color: gray;
-    cursor: pointer;
-}
-.circle:first-of-type {
-    background-color: rgb(61, 61, 61);
-}
-
-@media screen and (max-width: 477px) {
-    #sec-reviews h1 {font-size: 70px;}
-    #sec-reviews {
-        padding-bottom: 550px;
-    }
+@media screen and (max-width: 539px) {
+    #sec-reviews span {display: none;}
 }
 /*   --REVIEWS--   */
 
@@ -548,7 +602,7 @@ form div {
     background-color: var(--whiteyellow);
 }
 
-#sec-contact #contact-form {
+#sec-contact #contact-form-conteiner {
     max-width: 600px;
     margin-inline: auto;
 
@@ -557,9 +611,9 @@ form div {
     background-position: center;
 }
 
-#contact-form h1 {color: var(--darkblue);}
+#contact-form-conteiner h1 {color: var(--darkblue);}
 
-#contact-form form {
+#contact-form-conteiner form {
     margin-top: 30px;
     flex-direction: column;
 }
