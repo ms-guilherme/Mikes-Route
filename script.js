@@ -108,11 +108,9 @@ function formWithEmail() { //Client can choose what to inform (Email, by default
     if (requiredFields.name.checkValidity() && toCheck.checkValidity()) {
         event.preventDefault();
 
-        // emailjs.send("service_s7vi33i", "template_ys3jbu3", infos)
-        // .then(() => alert("Congratulations! Soon, we will contact you."))
-        // .catch((error) => alert("Ops! Something got wrong, please try again. " + error));
-
-        alert("Opa");
+        emailjs.send("service_s7vi33i", "template_ys3jbu3", infos)
+        .then(() => alert("Congratulations! Soon, we will contact you."))
+        .catch((error) => alert("Ops! Something got wrong, please try again. " + error));
 
         document.querySelector(`#${id} input[type="text"]`).value = "";
         document.querySelector(`#${id} input[type="email"]`).value = "";
