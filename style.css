@@ -245,7 +245,7 @@ header #call img {
 @media screen and (max-width: 350px) {
     header #menu2 a {font-size: 13px;}
 }
-@media screen and (max-width: 305px) {
+@media screen and (max-width: 310px) {
     header #company div {border-bottom: 0;}
     header #menu2 {padding-left: 15px;}
 }
