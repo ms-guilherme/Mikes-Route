@@ -19,6 +19,11 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+
 h1 {
     font: normal 700 75px Economica;
     text-align: center;
